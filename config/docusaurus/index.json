@@ -1,5 +1,11 @@
 {
   "label": "Settings",
+  "logo": {
+    "alt": "Tina",
+    "src": "/img/logo.png"
+  },
+  "title": "ERSC Docs",
+  "url": "https://esrc.amref.org/",
   "navbar": [
     {
       "label": "Docs",
@@ -13,30 +19,12 @@
       "position": "left"
     },
     {
-      "label": "MDX Page",
-      "link": "page",
-      "docLink": "src/pages/Test-MDX-Page.mdx",
-      "pageLink": "src/pages/Test-MDX-Page.mdx",
-      "position": "left"
-    },
-    {
-      "label": "Docusaurus GitHub",
+      "label": "ESRC Portal",
       "link": "external",
-      "externalLink": "https://github.com/facebook/docusaurus",
-      "position": "right"
-    },
-    {
-      "label": "Tina",
-      "link": "external",
-      "externalLink": "https://tina.io/",
+      "externalLink": "https://esrc.amref.org",
       "position": "right"
     }
   ],
-  "logo": {
-    "alt": "Tina",
-    "src": "/img/tina-icon.svg"
-  },
-  "title": "Tinasaurus",
   "footer": {
     "style": "dark",
     "links": [
@@ -54,18 +42,18 @@
         "title": "Community",
         "items": [
           {
-            "label": "Stack Overflow",
-            "href": "https://stackoverflow.com/questions/tagged/docusaurus",
+            "label": "Amref Health Africa",
+            "href": "https://amref.org/",
             "_template": "external"
           },
           {
-            "label": "Discord",
-            "href": "https://discordapp.com/invite/docusaurus",
+            "label": "Amref International University",
+            "href": "https://amref.ac.ke/",
             "_template": "external"
           },
           {
-            "label": "Twitter",
-            "href": "https://twitter.com/docusaurus",
+            "label": "Amref Flying Doctors",
+            "href": "https://flydoc.org/",
             "_template": "external"
           }
         ]
@@ -85,7 +73,6 @@
         ]
       }
     ],
-    "copyright": "My Project, Inc. Built with Docusaurus."
-  },
-  "url": "https://tinasaurus.vercel.app/"
+    "copyright": "© All rights reserved Amref Health Africa"
+  }
 }

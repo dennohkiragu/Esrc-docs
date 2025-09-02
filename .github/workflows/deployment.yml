@@ -30,7 +30,7 @@ jobs:
         uses: ChristopheLav/iis-deploy@v1.1.1
         with:
           websiteName: ${{ secrets.WEBSITE_NAME }}
-          msdeployServiceUrl: ${{ secrets.MSDEPLOY_URL }}
+          deployUrl: ${{ secrets.MSDEPLOY_URL }}
           deployUserName: ${{ secrets.WEBSITE_USERNAME }}
           deployUserPassword: ${{ secrets.WEBSITE_PASSWORD }}
           sourcePath: "build"

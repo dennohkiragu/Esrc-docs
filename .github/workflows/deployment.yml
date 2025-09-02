@@ -8,6 +8,12 @@ on:
 jobs:
   build-and-deploy:
     runs-on: windows-latest
+
+    env:
+      TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
+      TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+      TINA_BRANCH: main
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -18,16 +24,17 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build Docusaurus site
         run: npm run build
 
       - name: Deploy to IIS using WebDeploy
-        uses: microsoft/webdeploy-action@v1.0.4
+        uses: ChristopheLav/iis-deploy@v1.1.1
         with:
-          publish-url: ${{ secrets.WEBDEPLOY_PUBLISH_URL }}
-          site-name: ${{ secrets.WEBDEPLOY_SITE_NAME }}
-          username: ${{ secrets.WEBDEPLOY_USERNAME }}
-          password: ${{ secrets.WEBDEPLOY_PASSWORD }}
-          source-path: "build" # Docusaurus build folder
+          website-name: ${{ secrets.WEBSITE_NAME }}            # e.g., ESRC_Docs or Default Web Site
+          msdeploy-service-url: ${{ secrets.MSDEPLOY_URL }}    # e.g., https://hq-esrc-srv:8172
+          msdeploy-username: ${{ secrets.WEBSITE_USERNAME }}   # e.g., AMREF\Denis.Kiragu
+          msdeploy-password: ${{ secrets.WEBSITE_PASSWORD }}
+          source-path: build                                   # Deploy folder from your repo
+          skip-extra-files: false                              # Optional: preserves extra files on server

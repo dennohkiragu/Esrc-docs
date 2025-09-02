@@ -29,9 +29,9 @@ jobs:
       - name: Deploy to IIS
         uses: ChristopheLav/iis-deploy@v1.1.1
         with:
-          websiteName: ${{ secrets.WEBSITE_NAME }}
-          deployUrl: ${{ secrets.MSDEPLOY_URL }}
-          deployUserName: ${{ secrets.WEBSITE_USERNAME }}
-          deployUserPassword: ${{ secrets.WEBSITE_PASSWORD }}
+          website-name: ${{ secrets.WEBSITE_NAME }}
+          msdeploy-service-url: ${{ secrets.MSDEPLOY_URL }}
+          msdeploy-username: ${{ secrets.WEBSITE_USERNAME }}
+          msdeploy-password: ${{ secrets.WEBSITE_PASSWORD }}
           sourcePath: "build"
           allowUntrusted: true

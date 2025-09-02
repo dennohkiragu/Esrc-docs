@@ -34,5 +34,3 @@ jobs:
           deployUserName: ${{ secrets.WEBSITE_USERNAME }}
           deployUserPassword: ${{ secrets.WEBSITE_PASSWORD }}
           sourcePath: "build"
-
-

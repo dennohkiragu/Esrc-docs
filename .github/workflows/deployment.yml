@@ -8,12 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: windows-latest
-
-    env:
-      TINA_PUBLIC_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
-      TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-      TINA_BRANCH: main
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -24,17 +18,19 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Docusaurus site
         run: npm run build
+        env:
+          TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
 
-      - name: Deploy to IIS using WebDeploy
+      - name: Deploy to IIS
         uses: ChristopheLav/iis-deploy@v1.1.1
         with:
-          website-name: ${{ secrets.WEBSITE_NAME }}            # e.g., ESRC_Docs or Default Web Site
-          msdeploy-service-url: ${{ secrets.MSDEPLOY_URL }}    # e.g., https://hq-esrc-srv:8172
-          msdeploy-username: ${{ secrets.WEBSITE_USERNAME }}   # e.g., AMREF\Denis.Kiragu
-          msdeploy-password: ${{ secrets.WEBSITE_PASSWORD }}
-          source-path: build                                   # Deploy folder from your repo
-          skip-extra-files: false                              # Optional: preserves extra files on server
+          website-name: ${{ secrets.WEBSITE_NAME }}
+          msdeploy-service-url: ${{ secrets.MSDEPLOY_URL }}
+          username: ${{ secrets.MSDEPLOY_USERNAME }}
+          password: ${{ secrets.MSDEPLOY_PASSWORD }}
+          source-path: "build"

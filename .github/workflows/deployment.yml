@@ -31,6 +31,6 @@ jobs:
         with:
           website-name: ${{ secrets.WEBSITE_NAME }}
           msdeploy-service-url: ${{ secrets.MSDEPLOY_URL }}
-          username: ${{ secrets.MSDEPLOY_USERNAME }}
-          password: ${{ secrets.MSDEPLOY_PASSWORD }}
+          msdeploy-username: ${{ secrets.MSDEPLOY_USERNAME }}
+          msdeploy-password: ${{ secrets.MSDEPLOY_PASSWORD }}
           source-path: "build"

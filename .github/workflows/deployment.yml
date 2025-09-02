@@ -33,5 +33,5 @@ jobs:
           msdeploy-service-url: ${{ secrets.MSDEPLOY_URL }}
           msdeploy-username: ${{ secrets.WEBSITE_USERNAME }}
           msdeploy-password: ${{ secrets.WEBSITE_PASSWORD }}
-          sourcePath: "build"
-          allowUntrusted: true
+          source-path: build
+          skip-extra-files: false

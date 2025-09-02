@@ -5,7 +5,7 @@
     "src": "/img/logo.png"
   },
   "title": "ERSC Docs",
-  "url": "https://esrc.amref.org/",
+  "url": "https://esrcdocs.amref.org:8443/",
   "navbar": [
     {
       "label": "Docs",
@@ -64,11 +64,6 @@
           {
             "label": "Blog",
             "_template": "blog"
-          },
-          {
-            "label": "GitHub",
-            "href": "https://github.com/facebook/docusaurus",
-            "_template": "external"
           }
         ]
       }

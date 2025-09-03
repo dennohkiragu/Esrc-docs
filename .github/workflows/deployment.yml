@@ -29,9 +29,10 @@ jobs:
       - name: Deploy to IIS
         uses: ChristopheLav/iis-deploy@v1.1.1
         with:
-          website-name: ${{ secrets.WEBSITE_NAME }}
+          website-name: ESRC_Docs
           msdeploy-service-url: ${{ secrets.MSDEPLOY_URL }}
           msdeploy-username: ${{ secrets.WEBSITE_USERNAME }}
           msdeploy-password: ${{ secrets.WEBSITE_PASSWORD }}
-          source-path: build
+          source-path: ./build
           skip-extra-files: false
+

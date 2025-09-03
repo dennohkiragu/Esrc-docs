@@ -33,6 +33,6 @@ jobs:
           msdeploy-service-url: ${{ secrets.MSDEPLOY_URL }}
           msdeploy-username: ${{ secrets.WEBSITE_USERNAME }}
           msdeploy-password: ${{ secrets.WEBSITE_PASSWORD }}
-          source-path: ./build
+          source-path: ${{ github.workspace }}\build
           skip-extra-files: false
 

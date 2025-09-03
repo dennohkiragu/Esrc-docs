@@ -32,10 +32,12 @@ jobs:
           dir ${{ github.workspace }}\build
 
       - name: Deploy static site to IIS
+        shell: cmd
         run: |
-          "C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe" -verb:sync `
-            -source:contentPath="${{ github.workspace }}\build" `
-            -dest:contentPath="D:\Sites\Docs",ComputerName="${{ secrets.MSDEPLOY_URL }}",UserName="${{ secrets.WEBSITE_USERNAME }}",Password="${{ secrets.WEBSITE_PASSWORD }}",AuthType="Basic" `
-            -allowUntrusted `
-            -enableRule:DoNotDeleteRule `
+          "C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe" -verb:sync ^
+            -source:contentPath="${{ github.workspace }}\build" ^
+            -dest:contentPath="D:\Sites\Docs",ComputerName="${{ secrets.MSDEPLOY_URL }}",UserName="${{ secrets.WEBSITE_USERNAME }}",Password="${{ secrets.WEBSITE_PASSWORD }}",AuthType="Basic" ^
+            -allowUntrusted ^
+            -enableRule:DoNotDeleteRule ^
             -retryAttempts=5
+      

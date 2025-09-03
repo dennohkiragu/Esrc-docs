@@ -26,13 +26,16 @@ jobs:
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
           NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_TINA_CLIENT_ID }}
 
-      - name: Deploy to IIS
-        uses: ChristopheLav/iis-deploy@v1.1.1
-        with:
-          website-name: ESRC_Docs
-          msdeploy-service-url: ${{ secrets.MSDEPLOY_URL }}
-          msdeploy-username: ${{ secrets.WEBSITE_USERNAME }}
-          msdeploy-password: ${{ secrets.WEBSITE_PASSWORD }}
-          source-path: ${{ github.workspace }}\build
-          skip-extra-files: false
+      - name: Check build contents
+        run: |
+          echo "Listing build directory:"
+          dir ${{ github.workspace }}\build
 
+      - name: Deploy static site to IIS
+        run: |
+          "C:\Program Files\IIS\Microsoft Web Deploy V3\msdeploy.exe" -verb:sync `
+            -source:contentPath="${{ github.workspace }}\build" `
+            -dest:contentPath="D:\Sites\Docs",ComputerName="${{ secrets.MSDEPLOY_URL }}",UserName="${{ secrets.WEBSITE_USERNAME }}",Password="${{ secrets.WEBSITE_PASSWORD }}",AuthType="Basic" `
+            -allowUntrusted `
+            -enableRule:DoNotDeleteRule `
+            -retryAttempts=5
